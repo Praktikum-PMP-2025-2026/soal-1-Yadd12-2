@@ -3,7 +3,7 @@
  *   Hari dan Tanggal    : Rabu, 29 April 2026
  *   Nama (NIM)          : Fayyadh Ramadhan (13224077)
  *   Nama File           : soal1.c
- *   Deskripsi           : 
+ *   Deskripsi           : Menerima input data Artefak sebanyak N lalu mensortirnya based on Kategori, Tahun, Nilai, dan terakhir Nama.
  * 
  */
 
@@ -81,23 +81,6 @@ void sortKategori(struct Artefak data[], int N) {
     }
 }
 
-// void sortNama(struct Artefak data[], int N)
-// {
-//     int i, j;
-//     struct Artefak temp;
-    
-//     for(i = 0; i < N - 1; i++) {
-//         for(j = i + 1; j < N; j++) {
-//             if(strcmp(data[i].nama, data[j].nama) > 0) {
-//                 temp = data[i];
-//                 data[i] = data[j];
-//                 data[j] = temp;
-//             }
-//         }
-//     }
-// }
-
-
 int main()
 {
     int N, i;
@@ -120,5 +103,8 @@ int main()
     {
         printf("\n%s %s %d %d", data[i].nama, data[i].kategori, data[i].tahun, data[i].nilai);
     }
-    // printf("%s %s %s %s", data[0].nama, data[1].nama, data[2].nama, data[3].nama);
 }
+
+// Referensi
+// https://www.tutorialspoint.com/article/c-program-to-sort-names-in-alphabetical-order-using-structures
+// https://www.geeksforgeeks.org/c/c-bubble-sort/
