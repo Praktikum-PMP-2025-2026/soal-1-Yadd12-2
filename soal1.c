@@ -18,7 +18,39 @@ typedef struct Artefak {
     int nilai;
 } Artefak;
 
-void sortTahun(Artefak data[], int N)
+void swapNama(Artefak data[], int N)
+{
+    for(int i=0;i<N-1;i++)
+    {
+        if(strcmp(data[i].kategori, data[i+1].kategori) == 0 && data[i].tahun==data[i+1].tahun && data[i].nilai==data[i+1].nilai)
+        {
+            if(strcmp(data[i].kategori, data[i+1].kategori) > 0)
+            {
+                Artefak temp = data[i];
+                data[i] = data[i+1];
+                data[i+1] = temp;
+            }
+        }
+    }
+}
+
+void swapNilai(Artefak data[], int N)
+{
+    for(int i=0;i<N-1;i++)
+    {
+        if(strcmp(data[i].kategori, data[i+1].kategori) == 0 && data[i].tahun==data[i+1].tahun)
+        {
+            if (data[i].nilai < data[i+1].nilai)
+            {
+                Artefak temp = data[i];
+                data[i] = data[i+1];
+                data[i+1] = temp;
+            }
+        }
+    }
+}
+
+void swapTahun(Artefak data[], int N)
 {
     for(int i=0;i<N-1;i++)
     {
@@ -32,8 +64,6 @@ void sortTahun(Artefak data[], int N)
             }
         }
     }
-    
-    
 }
 
 void sortKategori(struct Artefak data[], int N) {
@@ -47,49 +77,25 @@ void sortKategori(struct Artefak data[], int N) {
                 data[i] = data[j];
                 data[j] = temp;
             }
-            // else if(strcmp(data[i].kategori, data[j].kategori) == 0)
-            // {
-            //     sortTahun(data, i, j);
-            // }
         }
     }
 }
 
-// void sortTahun(Artefak data[], int bawah, int atas)
+// void sortNama(struct Artefak data[], int N)
 // {
-//     for (int i = bawah; i < atas - 1; i++)
-//     {
-//         for (int j = 0; j < atas - i - 1; j++)
-//         {
-//             if (data[j].tahun > data[j+1].tahun)
-//             {
-//                 int temp = data[i].tahun;
-//                 data[i].tahun = data[j].tahun;
-//                 data[j].tahun = temp;
+//     int i, j;
+//     struct Artefak temp;
+    
+//     for(i = 0; i < N - 1; i++) {
+//         for(j = i + 1; j < N; j++) {
+//             if(strcmp(data[i].nama, data[j].nama) > 0) {
+//                 temp = data[i];
+//                 data[i] = data[j];
+//                 data[j] = temp;
 //             }
 //         }
 //     }
 // }
-
-void sortNama(struct Artefak data[], int N)
-{
-    int i, j;
-    struct Artefak temp;
-    
-    for(i = 0; i < N - 1; i++) {
-        for(j = i + 1; j < N; j++) {
-            if(strcmp(data[i].nama, data[j].nama) > 0) {
-                temp = data[i];
-                data[i] = data[j];
-                data[j] = temp;
-            }
-            // else if(strcmp(data[i].nama, data[j].nama) == 0)
-            // {
-            //     sortTahun(data, i, j);
-            // }
-        }
-    }
-}
 
 
 int main()
@@ -106,7 +112,9 @@ int main()
     }
 
     sortKategori(data, N);
-    sortTahun(data, N);
+    swapTahun(data, N);
+    swapNilai(data, N);
+    swapNama(data, N);
 
     for(i=0;i<N;i++)
     {
